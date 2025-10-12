@@ -1,0 +1,26 @@
+# FastAPI service requirements
+fastapi
+uvicorn[standard]
+python-multipart
+python-jose[cryptography]
+passlib[bcrypt]
+
+# Core ML dependencies
+ultralytics
+supervision
+torch==2.4.0
+torchvision==0.19.0
+
+# Image/Video processing
+opencv-python-headless>=4.8.0,<4.10.0
+Pillow
+numpy<2.0.0,>=1.26.0
+pandas
+
+# Data handling
+openpyxl
+lapx
+
+# Optional: For production deployment
+gunicorn
+
