@@ -1,26 +1,71 @@
-# FastAPI service requirements
-fastapi
-uvicorn[standard]
-python-multipart
-python-jose[cryptography]
-passlib[bcrypt]
+# =============================================================================
+# FastAPI Inventory Detector - Python Dependencies
+# Version: 2.0.0
+# =============================================================================
 
+# FastAPI service requirements
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+python-multipart>=0.0.6
+pydantic>=2.0.0
+
+# Note: python-jose and passlib removed as they're not used in the current implementation
+# Uncomment if you plan to add authentication:
+# python-jose[cryptography]
+# passlib[bcrypt]
+
+# =============================================================================
 # Core ML dependencies
-ultralytics
-supervision
+# =============================================================================
+ultralytics>=8.0.0
+supervision>=0.18.0
 torch==2.4.0
 torchvision==0.19.0
 
+# =============================================================================
 # Image/Video processing
-opencv-python-headless>=4.8.0,<4.10.0
-Pillow
-numpy<2.0.0,>=1.26.0
-pandas
+# =============================================================================
+opencv-python-headless>=4.10.0.84
+Pillow>=10.0.0
+numpy<2.0,>=1.24.0
+pandas>=2.0.0
 
+# =============================================================================
+# OCR dependencies (NEW in v2.0)
+# =============================================================================
+# PaddlePaddle framework (CPU version by default)
+# For GPU support, install paddlepaddle-gpu instead
+paddlepaddle>=2.5.0
+paddleocr>=2.7.0
+
+# =============================================================================
+# Text matching and fuzzy search (NEW in v2.0)
+# =============================================================================
+rapidfuzz>=3.0.0
+
+# =============================================================================
 # Data handling
-openpyxl
-lapx
+# =============================================================================
+lapx>=0.5.0
 
-# Optional: For production deployment
-gunicorn
+# =============================================================================
+# Database for large catalog datasets (200,000+ SKUs)
+# =============================================================================
+# DuckDB: Fast analytical database for large datasets
+# Better than SQLite for analytical queries and large datasets
+duckdb>=0.9.0
+
+# =============================================================================
+# Production deployment
+# =============================================================================
+gunicorn>=21.2.0
+
+# =============================================================================
+# Optional dependencies
+# =============================================================================
+# For enhanced text similarity (TF-IDF) - uncomment if needed
+# scikit-learn>=1.0.0
+
+# For GPU support with PaddleOCR - uncomment and replace paddlepaddle above
+# paddlepaddle-gpu>=2.5.0
 

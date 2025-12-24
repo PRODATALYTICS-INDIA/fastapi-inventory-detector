@@ -1,0 +1,93 @@
+[
+  {
+    "id": 0,
+    "code": "Sku1_Dettol Soap",
+    "item_name": "dettol-soap",
+    "brand": "Dettol",
+    "sub_category": "bar-soap",
+    "category": "personal-hygiene",
+    "price_per_unit": "-",
+    "quantity_per_unit": "-",
+    "upc": NaN,
+    "additional_info": "-",
+    "detection_keywords": ["dettol", "dettol soap", "dettol bar soap", "dettol antibacterial", "dettol antiseptic"]
+  },
+  {
+    "id": 1,
+    "code": "Sku2_Boost",
+    "item_name": "boost ",
+    "brand": "Boost",
+    "sub_category": "nutritional-drink",
+    "category": "health-drink",
+    "price_per_unit": "-",
+    "quantity_per_unit": "-",
+    "upc": NaN,
+    "additional_info": "-",
+    "detection_keywords": ["boost", "nestle boost", "boost drink", "boost nutritional", "boost health"]
+  },
+  {
+    "id": 2,
+    "code": "Sku3_Parle-G Biscuits",
+    "item_name": "parle-G-biscuit",
+    "brand": "Parle-G",
+    "sub_category": "glucose-biscuits",
+    "category": "snacks",
+    "price_per_unit": "-",
+    "quantity_per_unit": "-",
+    "upc": NaN,
+    "additional_info": "-",
+    "detection_keywords": ["parle", "parle-g", "parleg", "parle g", "parle glucose", "parle-g biscuit", "parleg biscuit", "glucose biscuit parle"]
+  },
+  {
+    "id": 3,
+    "code": "Sku4_Colgate Paste",
+    "item_name": "colgate-paste",
+    "brand": "Colgate",
+    "sub_category": "toothpaste",
+    "category": "oral-care",
+    "price_per_unit": "-",
+    "quantity_per_unit": "-",
+    "upc": NaN,
+    "additional_info": "-",
+    "detection_keywords": ["colgate", "colgate paste", "colgate toothpaste", "colgate tooth paste", "colgate dental"]
+  },
+  {
+    "id": 4,
+    "code": "Sku5_Dairy Milk",
+    "item_name": "dairy-milk-chocolate",
+    "brand": "Cadbury",
+    "sub_category": "milk-chocolate",
+    "category": "confectionery",
+    "price_per_unit": "-",
+    "quantity_per_unit": "-",
+    "upc": NaN,
+    "additional_info": "-",
+    "detection_keywords": ["cadbury", "cadbury dairy milk", "cadbury dairymilk", "dairy milk cadbury", "dairymilk cadbury"]
+  },
+  {
+    "id": 5,
+    "code": "Sku6_Rainbow Tissues",
+    "item_name": "rainbow-tissue",
+    "brand": "Rainbow",
+    "sub_category": "facial-tissues",
+    "category": "personal-care",
+    "price_per_unit": "-",
+    "quantity_per_unit": "-",
+    "upc": NaN,
+    "additional_info": "-",
+    "detection_keywords": ["rainbow", "rainbow tissue", "rainbow tissues", "rainbow facial", "rainbow paper tissue"]
+  },
+  {
+    "id": 6,
+    "code": "Sku7_Ajay tooth Brush",
+    "item_name": "ajay-tooth-brush",
+    "brand": "Ajay",
+    "sub_category": "toothbrush",
+    "category": "oral-care",
+    "price_per_unit": "-",
+    "quantity_per_unit": "-",
+    "upc": NaN,
+    "additional_info": "-",
+    "detection_keywords": ["ajay", "ajay brush", "ajay toothbrush", "ajay tooth brush", "tooth brush ajay", "ajay dental"]
+  }
+]

@@ -1,0 +1,21 @@
+Crop 1:
+  text: 66.66 dettol
+  lines: 2
+    1. '66.66' (conf=0.811)
+    2. 'Dettol' (conf=0.998)
+
+Crop 2:
+  text: boos s. 1cuppack
+  lines: 3
+    1. 'Boos' (conf=0.716)
+    2. 'S.' (conf=0.690)
+    3. '1CUPPACK' (conf=0.975)
+
+Crop 3:
+  text: colgate
+  lines: 1
+    1. 'Colgate' (conf=0.997)
+
+Crop 4:
+  text: (none)
+

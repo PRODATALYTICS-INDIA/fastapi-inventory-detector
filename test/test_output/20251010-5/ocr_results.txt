@@ -1,0 +1,27 @@
+Crop 1:
+  text: 5. b00st
+  lines: 2
+    1. '5.' (conf=0.777)
+    2. 'B00ST' (conf=0.586)
+
+Crop 2:
+  text: strong teeth
+  lines: 1
+    1. 'STRONG TEETH' (conf=0.962)
+
+Crop 3:
+  text: 20 aj4y
+  lines: 2
+    1. '20' (conf=0.938)
+    2. 'Aj4y' (conf=0.618)
+
+Crop 4:
+  text: original dettol 6/01
+  lines: 3
+    1. 'ORIGINAL' (conf=0.990)
+    2. 'Dettol' (conf=0.997)
+    3. '6/01' (conf=0.729)
+
+Crop 5:
+  text: (none)
+

@@ -1,0 +1,28 @@
+Crop 1:
+  text: boos1 1cuppack
+  lines: 2
+    1. 'BOOS1' (conf=0.690)
+    2. '1CUPPACK' (conf=0.978)
+
+Crop 2:
+  text: colgate strong teeth
+  lines: 2
+    1. 'Colgate' (conf=0.998)
+    2. 'STRONG TEETH' (conf=0.969)
+
+Crop 3:
+  text: 20 imajay
+  lines: 2
+    1. '20' (conf=0.920)
+    2. 'ImAjay' (conf=0.533)
+
+Crop 4:
+  text: %6666 original dettol
+  lines: 3
+    1. '%6666' (conf=0.588)
+    2. 'ORIGINAL' (conf=0.986)
+    3. 'Dettol' (conf=0.998)
+
+Crop 5:
+  text: (none)
+

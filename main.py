@@ -88,8 +88,9 @@ async def startup_event():
     """
     global tracker  # Access the global tracker variable
     try:
-        # Step 1: Define the path to the trained YOLO model (YOLOv11-seg segmentation model)
-        model_path = "models/model-segment_25-10-10.pt"
+        # Step 1: Define the path to the trained segmentation model
+        # The system automatically detects segmentation models and initializes appropriate annotators
+        model_path = "models/segmentation-model.pt"
         
         # Step 2: Verify the model file exists before attempting to load
         if not os.path.exists(model_path):
@@ -133,7 +134,7 @@ async def health_check():
     return {
         "status": "healthy",
         "model_loaded": tracker is not None,
-        "model_path": "models/model-segment_25-10-10.pt" if tracker else None,
+        "model_path": "models/segmentation-model.pt" if tracker else None,
         "timestamp": datetime.now().isoformat()
     }
 
@@ -223,13 +224,14 @@ async def predict_image(
         annotated_image_b64 = base64.b64encode(buffer).decode('utf-8')  # Convert to base64 string
         
         # Step 10: Prepare the response dictionary
+        # live_summary now contains confidence info: {"Product A": {"count": 5, "confidence_avg": 85.3, ...}, ...}
         response = {
             "success": True,
             "filename": file.filename,
             "confidence_threshold": confidence_threshold,
             "label_mode": label_mode,
             "frame_count": tracker.frame_count,
-            "detections": live_summary,  # Dict like {"Product A": 5, "Product B": 3}
+            "detections": live_summary,  # Dict with count and confidence: {"Product A": {"count": 5, "confidence_avg": 85.3, ...}}
             "statistics": stats_df.to_dict('records') if not stats_df.empty else [],  # Convert DataFrame to list of dicts
             "annotated_image": f"data:image/jpeg;base64,{annotated_image_b64}",  # Data URI for displaying in browser
             "timestamp": datetime.now().isoformat()
@@ -412,7 +414,7 @@ async def get_model_info():
         raise HTTPException(status_code=500, detail="Model not loaded")
     
     return {
-        "model_path": "models/model-segment_25-10-10.pt",
+        "model_path": "models/segmentation-model.pt",
         "label_mode": tracker.label_mode,
         "valid_label_modes": list(tracker.valid_label_modes),  # Convert set to list for JSON
         "confidence_threshold": tracker.confidence_threshold,
@@ -484,7 +486,7 @@ if __name__ == "__main__":
     API documentation available at: http://localhost:8000/docs
     """
     uvicorn.run(
-        "fastapiservice:app",    # Module path to the FastAPI app
+        "main:app",    # Module path to the FastAPI app
         host="0.0.0.0",            # Listen on all network interfaces
         port=8000,                 # Default API port
         reload=True,               # Auto-reload on code changes (development mode)

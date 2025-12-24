@@ -1,0 +1,27 @@
+Crop 1:
+  text: boost 5 dill
+  lines: 3
+    1. 'BOoSt' (conf=0.678)
+    2. '5' (conf=0.687)
+    3. 'Dill' (conf=0.722)
+
+Crop 2:
+  text: detto original
+  lines: 2
+    1. 'Detto' (conf=0.989)
+    2. 'ORIGINAL' (conf=0.996)
+
+Crop 3:
+  text: coette strong teeth
+  lines: 2
+    1. 'coette' (conf=0.535)
+    2. 'STRONG TEETH' (conf=0.951)
+
+Crop 4:
+  text: (none)
+
+Crop 5:
+  text: ajay
+  lines: 1
+    1. 'Ajay' (conf=0.674)
+
