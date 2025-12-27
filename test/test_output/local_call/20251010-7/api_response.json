@@ -1,0 +1,125 @@
+{
+  "success": true,
+  "status": "success",
+  "timestamp": "2025-12-27T11:22:16.582692",
+  "model_version": "25.11.0",
+  "app_version": "2.0.0",
+  "processing_time_ms": 6.803274154663086,
+  "input": {
+    "type": "image",
+    "filename": "20251010-7.jpeg",
+    "frame_count": 1
+  },
+  "summary": {
+    "sku_counts": {
+      "sku1_dettol_soap": {
+        "sku_id": "Sku1_Dettol Soap",
+        "count": 1,
+        "confidence": 0.9025632262229919
+      },
+      "sku2_boost": {
+        "sku_id": "Sku2_Boost",
+        "count": 1,
+        "confidence": 0.8600931194695559
+      },
+      "sku7_ajay_tooth_brush": {
+        "sku_id": "Sku7_Ajay tooth Brush",
+        "count": 1,
+        "confidence": 0.42518855094909663
+      }
+    },
+    "total_detections": 3,
+    "validated_detections": 2
+  },
+  "details": [
+    {
+      "detection_id": "f0_d0",
+      "final_prediction": {
+        "sku_id": "Sku1_Dettol Soap",
+        "sku_name": "dettol-soap",
+        "confidence": 0.9025632262229919,
+        "bbox": [
+          436.71942138671875,
+          445.47589111328125,
+          581.6443481445312,
+          660.3911743164062
+        ],
+        "validation_status": "fully_validated",
+        "decision_reason": [
+          "detection_ocr_agreement",
+          "both_predicted_Sku1_Dettol Soap"
+        ]
+      },
+      "detection_model": {
+        "matched_sku_id": "Sku1_Dettol Soap",
+        "match_confidence": 0.9051264524459839
+      },
+      "ocr_model": {
+        "text_raw": "66.66 dettol",
+        "method": "fuzzy",
+        "matched_sku_id": "Sku1_Dettol Soap",
+        "match_confidence": 0.9
+      }
+    },
+    {
+      "detection_id": "f0_d1",
+      "final_prediction": {
+        "sku_id": "Sku2_Boost",
+        "sku_name": "boost ",
+        "confidence": 0.8600931194695559,
+        "bbox": [
+          435.354248046875,
+          728.5335693359375,
+          636.62451171875,
+          1001.2713623046875
+        ],
+        "validation_status": "fully_validated",
+        "decision_reason": [
+          "detection_ocr_agreement",
+          "both_predicted_Sku2_Boost"
+        ]
+      },
+      "detection_model": {
+        "matched_sku_id": "Sku2_Boost",
+        "match_confidence": 0.9020044207572937
+      },
+      "ocr_model": {
+        "text_raw": "boos s. 1cuppack",
+        "method": "fuzzy",
+        "matched_sku_id": "Sku2_Boost",
+        "match_confidence": 0.8181818181818181
+      }
+    },
+    {
+      "detection_id": "f0_d2",
+      "final_prediction": {
+        "sku_id": "Sku7_Ajay tooth Brush",
+        "sku_name": "ajay-tooth-brush",
+        "confidence": 0.42518855094909663,
+        "bbox": [
+          266.987060546875,
+          326.71728515625,
+          374.542724609375,
+          987.6416015625
+        ],
+        "validation_status": "only_detection_validated",
+        "decision_reason": [
+          "detection_strong_ocr_weak",
+          "detection_confidence_0.83_above_0.6",
+          "ocr_text_empty",
+          "confidence_penalty_applied_0.6"
+        ]
+      },
+      "detection_model": {
+        "matched_sku_id": "Sku7_Ajay tooth Brush",
+        "match_confidence": 0.8337030410766602
+      },
+      "ocr_model": {
+        "text_raw": "",
+        "method": "none",
+        "matched_sku_id": null,
+        "match_confidence": null
+      }
+    }
+  ]
+}

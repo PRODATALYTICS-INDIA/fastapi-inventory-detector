@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "status": "success",
+  "timestamp": "2025-12-27T11:26:34.994601",
+  "model_version": "25.11.0",
+  "app_version": "2.0.0",
+  "processing_time_ms": 76.04122161865234,
+  "input": {
+    "type": "image",
+    "filename": "20251010-3.jpeg",
+    "frame_count": 1
+  },
+  "summary": {
+    "sku_counts": {},
+    "total_detections": 0,
+    "validated_detections": 0
+  },
+  "details": []
+}

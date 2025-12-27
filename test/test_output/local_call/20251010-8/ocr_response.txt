@@ -1,0 +1,45 @@
+================================================================================
+DETECTION AND OCR RESULTS
+================================================================================
+
+Image: 20251010-8.jpeg
+Processed: 2025-12-27 11:22:17
+Confidence Threshold: 0.5
+Total Detections: 1
+
+DETECTION SUMMARY:
+--------------------------------------------------------------------------------
+  boost : 1 items (avg confidence: 94.9%)
+  dettol-soap: 1 items (avg confidence: 93.9%)
+  colgate-paste: 1 items (avg confidence: 86.4%)
+  ajay-tooth-brush: 3 items (avg confidence: 71.0%)
+
+DETAILED RESULTS:
+================================================================================
+
+Object 1:
+--------------------------------------------------------------------------------
+  Detection SKU: Sku1_Dettol Soap
+  Detection Confidence: 93.90%
+  Detection ID: 2
+  Bounding Box: [107, 434, 266, 657]
+
+  OCR Results:
+    Extracted Text: '-66.66 detol'
+    Text Lines: 2
+      Line 1: '-66.66' (confidence: 71.15%)
+      Line 2: 'Detol' (confidence: 59.29%)
+
+  SKU Matching:
+    Matched SKU: Sku1_Dettol Soap
+    SKU Name: dettol-soap
+    Match Confidence: 81.82%
+
+  Keyword Similarity (OCR vs Detection Keywords):
+    Best Match Keyword: 'dettol'
+    Similarity Score: 73.23%
+    Top Matches:
+      - 'dettol': 73.23%
+      - 'dettol soap': 52.99%
+      - 'dettol bar soap': 50.00%
+

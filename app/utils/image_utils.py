@@ -3,7 +3,8 @@ Image utility functions for crop extraction and preprocessing.
 """
 from typing import Optional
 import numpy as np
-import cv2
+# Lazy import cv2 to prevent OOM during module load
+# cv2 will be imported only when functions are called
 import logging
 
 logger = logging.getLogger(__name__)
@@ -25,6 +26,8 @@ def extract_crop_from_bbox(
     Returns:
         Cropped image as numpy array, or None if invalid
     """
+    # Lazy import cv2 only when function is called
+    import cv2
     try:
         h, w = image.shape[:2]
         x1, y1, x2, y2 = bbox.astype(int)
@@ -126,6 +129,8 @@ def preprocess_image_for_ocr(
     Returns:
         Preprocessed image
     """
+    # Lazy import cv2 only when function is called
+    import cv2
     processed = image.copy()
     
     # Convert to grayscale if needed
@@ -168,6 +173,8 @@ def resize_image_for_ocr(
     Returns:
         Resized image
     """
+    # Lazy import cv2 only when function is called
+    import cv2
     h, w = image.shape[:2]
     
     # Calculate scale to fit within max_size while maintaining aspect ratio

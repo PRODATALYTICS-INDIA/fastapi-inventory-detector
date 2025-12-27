@@ -1,0 +1,127 @@
+{
+  "success": true,
+  "status": "success",
+  "timestamp": "2025-12-27T11:26:34.180657",
+  "model_version": "25.11.0",
+  "app_version": "2.0.0",
+  "processing_time_ms": 997.1640110015869,
+  "input": {
+    "type": "image",
+    "filename": "20251010-1.jpeg",
+    "frame_count": 1
+  },
+  "summary": {
+    "sku_counts": {
+      "sku2_boost": {
+        "sku_id": "Sku2_Boost",
+        "count": 1,
+        "confidence": 0.9126710712909698
+      },
+      "sku4_colgate_paste": {
+        "sku_id": "Sku4_Colgate Paste",
+        "count": 1,
+        "confidence": 0.3315303039550781
+      },
+      "sku7_ajay_tooth_brush": {
+        "sku_id": "Sku7_Ajay tooth Brush",
+        "count": 1,
+        "confidence": 0.4348681819438934
+      }
+    },
+    "total_detections": 3,
+    "validated_detections": 1
+  },
+  "details": [
+    {
+      "detection_id": "f0_d0",
+      "final_prediction": {
+        "sku_id": "Sku2_Boost",
+        "sku_name": "boost ",
+        "confidence": 0.9126710712909698,
+        "bbox": [
+          401.5896301269531,
+          224.19580078125,
+          684.879638671875,
+          443.96978759765625
+        ],
+        "validation_status": "fully_validated",
+        "decision_reason": [
+          "detection_ocr_agreement",
+          "both_predicted_Sku2_Boost"
+        ]
+      },
+      "detection_model": {
+        "matched_sku_id": "Sku2_Boost",
+        "match_confidence": 0.9253421425819397
+      },
+      "ocr_model": {
+        "text_raw": "cup pack boost",
+        "method": "fuzzy",
+        "matched_sku_id": "Sku2_Boost",
+        "match_confidence": 0.9
+      }
+    },
+    {
+      "detection_id": "f0_d1",
+      "final_prediction": {
+        "sku_id": "Sku4_Colgate Paste",
+        "sku_name": "colgate-paste",
+        "confidence": 0.3315303039550781,
+        "bbox": [
+          112.15609741210938,
+          301.47015380859375,
+          277.13275146484375,
+          760.1537475585938
+        ],
+        "validation_status": "only_detection_validated",
+        "decision_reason": [
+          "detection_strong_ocr_weak",
+          "detection_confidence_0.92_above_0.6",
+          "ocr_match_confidence_0.00_below_0.7",
+          "confidence_penalty_applied_0.6"
+        ]
+      },
+      "detection_model": {
+        "matched_sku_id": "Sku4_Colgate Paste",
+        "match_confidence": 0.9209175109863281
+      },
+      "ocr_model": {
+        "text_raw": "si",
+        "method": "none",
+        "matched_sku_id": null,
+        "match_confidence": null
+      }
+    },
+    {
+      "detection_id": "f0_d2",
+      "final_prediction": {
+        "sku_id": "Sku7_Ajay tooth Brush",
+        "sku_name": "ajay-tooth-brush",
+        "confidence": 0.4348681819438934,
+        "bbox": [
+          83.361083984375,
+          837.3421630859375,
+          837.7554931640625,
+          998.3533935546875
+        ],
+        "validation_status": "only_detection_validated",
+        "decision_reason": [
+          "detection_strong_ocr_weak",
+          "detection_confidence_0.85_above_0.6",
+          "ocr_text_empty",
+          "confidence_penalty_applied_0.6"
+        ]
+      },
+      "detection_model": {
+        "matched_sku_id": "Sku7_Ajay tooth Brush",
+        "match_confidence": 0.8526827096939087
+      },
+      "ocr_model": {
+        "text_raw": "",
+        "method": "none",
+        "matched_sku_id": null,
+        "match_confidence": null
+      }
+    }
+  ]
+}

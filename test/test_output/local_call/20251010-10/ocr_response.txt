@@ -1,0 +1,69 @@
+================================================================================
+DETECTION AND OCR RESULTS
+================================================================================
+
+Image: 20251010-10.jpeg
+Processed: 2025-12-27 11:22:13
+Confidence Threshold: 0.5
+Total Detections: 2
+
+DETECTION SUMMARY:
+--------------------------------------------------------------------------------
+  boost : 1 items (avg confidence: 95.0%)
+  dettol-soap: 1 items (avg confidence: 93.8%)
+  colgate-paste: 1 items (avg confidence: 90.3%)
+  ajay-tooth-brush: 2 items (avg confidence: 81.3%)
+
+DETAILED RESULTS:
+================================================================================
+
+Object 1:
+--------------------------------------------------------------------------------
+  Detection SKU: Sku2_Boost
+  Detection Confidence: 95.00%
+  Detection ID: 1
+  Bounding Box: [478, 134, 762, 363]
+
+  OCR Results:
+    Extracted Text: 'boost'
+    Text Lines: 1
+      Line 1: 'BOOST' (confidence: 97.78%)
+
+  SKU Matching:
+    Matched SKU: Sku2_Boost
+    SKU Name: boost 
+    Match Confidence: 90.00%
+
+  Keyword Similarity (OCR vs Detection Keywords):
+    Best Match Keyword: 'boost'
+    Similarity Score: 100.00%
+    Top Matches:
+      - 'boost': 100.00%
+      - 'boost drink': 88.75%
+      - 'nestle boost': 87.65%
+
+Object 2:
+--------------------------------------------------------------------------------
+  Detection SKU: Sku7_Ajay tooth Brush
+  Detection Confidence: 78.53%
+  Detection ID: 2
+  Bounding Box: [65, 332, 222, 1030]
+
+  OCR Results:
+    Extracted Text: 'rajay'
+    Text Lines: 1
+      Line 1: 'RAjay' (confidence: 66.37%)
+
+  SKU Matching:
+    Matched SKU: Sku7_Ajay tooth Brush
+    SKU Name: ajay-tooth-brush
+    Match Confidence: 90.00%
+
+  Keyword Similarity (OCR vs Detection Keywords):
+    Best Match Keyword: 'ajay'
+    Similarity Score: 94.44%
+    Top Matches:
+      - 'ajay': 94.44%
+      - 'ajay brush': 71.11%
+      - 'ajay dental': 69.44%
+

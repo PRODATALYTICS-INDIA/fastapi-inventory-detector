@@ -1,0 +1,55 @@
+{
+  "success": true,
+  "status": "success",
+  "timestamp": "2025-12-27T11:22:14.310916",
+  "model_version": "25.11.0",
+  "app_version": "2.0.0",
+  "processing_time_ms": 6.865978240966797,
+  "input": {
+    "type": "image",
+    "filename": "20251010-2.jpeg",
+    "frame_count": 1
+  },
+  "summary": {
+    "sku_counts": {
+      "sku2_boost": {
+        "sku_id": "Sku2_Boost",
+        "count": 1,
+        "confidence": 0.886421389579773
+      }
+    },
+    "total_detections": 1,
+    "validated_detections": 1
+  },
+  "details": [
+    {
+      "detection_id": "f0_d0",
+      "final_prediction": {
+        "sku_id": "Sku2_Boost",
+        "sku_name": "boost ",
+        "confidence": 0.886421389579773,
+        "bbox": [
+          81.41879272460938,
+          600.992919921875,
+          264.7745666503906,
+          842.5684814453125
+        ],
+        "validation_status": "fully_validated",
+        "decision_reason": [
+          "detection_ocr_agreement",
+          "both_predicted_Sku2_Boost"
+        ]
+      },
+      "detection_model": {
+        "matched_sku_id": "Sku2_Boost",
+        "match_confidence": 0.9440356492996216
+      },
+      "ocr_model": {
+        "text_raw": "boos1 1cuppack",
+        "method": "fuzzy",
+        "matched_sku_id": "Sku2_Boost",
+        "match_confidence": 0.7999999999999999
+      }
+    }
+  ]
+}

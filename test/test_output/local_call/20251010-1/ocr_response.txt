@@ -1,0 +1,84 @@
+================================================================================
+DETECTION AND OCR RESULTS
+================================================================================
+
+Image: 20251010-1.jpeg
+Processed: 2025-12-27 11:22:13
+Confidence Threshold: 0.5
+Total Detections: 3
+
+DETECTION SUMMARY:
+--------------------------------------------------------------------------------
+  boost : 1 items (avg confidence: 92.5%)
+  colgate-paste: 1 items (avg confidence: 92.1%)
+  ajay-tooth-brush: 1 items (avg confidence: 85.3%)
+
+DETAILED RESULTS:
+================================================================================
+
+Object 1:
+--------------------------------------------------------------------------------
+  Detection SKU: Sku2_Boost
+  Detection Confidence: 92.53%
+  Detection ID: 1
+  Bounding Box: [402, 224, 685, 444]
+
+  OCR Results:
+    Extracted Text: 'cup pack boost'
+    Text Lines: 2
+      Line 1: 'CUP PACK' (confidence: 93.06%)
+      Line 2: 'BOOST' (confidence: 96.99%)
+
+  SKU Matching:
+    Matched SKU: Sku2_Boost
+    SKU Name: boost 
+    Match Confidence: 90.00%
+
+  Keyword Similarity (OCR vs Detection Keywords):
+    Best Match Keyword: 'boost'
+    Similarity Score: 85.79%
+    Top Matches:
+      - 'boost': 85.79%
+      - 'boost drink': 60.55%
+      - 'nestle boost': 58.94%
+
+Object 2:
+--------------------------------------------------------------------------------
+  Detection SKU: Sku4_Colgate Paste
+  Detection Confidence: 92.09%
+  Detection ID: 2
+  Bounding Box: [112, 301, 277, 760]
+
+  OCR Results:
+    Extracted Text: 'si'
+    Text Lines: 1
+      Line 1: 'SI' (confidence: 52.30%)
+
+  SKU Matching:
+    No confident match found
+    Best Match Confidence: 0.00%
+
+  Keyword Similarity (OCR vs Detection Keywords):
+    Best Match Keyword: 'colgate paste'
+    Similarity Score: 31.67%
+    Top Matches:
+      - 'colgate paste': 31.67%
+      - 'colgate toothpaste': 30.00%
+      - 'colgate tooth paste': 29.76%
+
+Object 3:
+--------------------------------------------------------------------------------
+  Detection SKU: Sku7_Ajay tooth Brush
+  Detection Confidence: 85.27%
+  Detection ID: 3
+  Bounding Box: [83, 837, 838, 998]
+
+  OCR Results:
+    No text extracted
+
+  SKU Matching:
+    Skipped (no OCR text)
+
+  Keyword Similarity (OCR vs Detection Keywords):
+    Skipped (no OCR text)
+

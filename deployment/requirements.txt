@@ -1,6 +1,10 @@
 # =============================================================================
-# FastAPI Inventory Detector - Python Dependencies
-# Version: 2.0.0
+# Docker Deployment Requirements for Linux Server (CPU-only)
+# Version: 2.0.0 - Production Build
+# =============================================================================
+# This file is used by the Dockerfile for production builds
+# PyTorch (torch==2.4.0, torchvision==0.19.0) is installed separately in Dockerfile
+# For local development, use the root requirements.txt
 # =============================================================================
 
 # FastAPI service requirements
@@ -10,37 +14,36 @@ python-multipart>=0.0.6
 pydantic>=2.0.0
 orjson>=3.9.0  # Fast JSON serialization (optional but recommended for FastAPI)
 
-# Note: python-jose and passlib removed as they're not used in the current implementation
-# Uncomment if you plan to add authentication:
-# python-jose[cryptography]
-# passlib[bcrypt]
-
 # =============================================================================
 # Core ML dependencies
 # =============================================================================
 ultralytics>=8.0.0
 supervision>=0.18.0
-torch==2.4.0
-torchvision==0.19.0
+# torch==2.4.0 - Installed separately in Dockerfile from CPU-only index
+# torchvision==0.19.0 - Installed separately in Dockerfile from CPU-only index
 
 # =============================================================================
 # Image/Video processing
 # =============================================================================
-opencv-python-headless>=4.10.0.84
+# CRITICAL: Pin opencv-python-headless explicitly to prevent transitive opencv-python installation
+# ultralytics/supervision may pull in opencv-python, which requires libGL.so.1
+# Must be installed BEFORE ultralytics/supervision to prevent wrong wheel selection
+# Note: opencv-python-headless is installed explicitly in Dockerfile BEFORE other packages
+# to prevent pip from selecting opencv-python as a dependency
+opencv-python-headless==4.10.0.84
 Pillow>=10.0.0
 numpy<2.0,>=1.24.0
 pandas>=2.0.0
 
 # =============================================================================
-# OCR dependencies (NEW in v2.0)
+# OCR dependencies
 # =============================================================================
-# PaddlePaddle framework (CPU version by default)
-# For GPU support, install paddlepaddle-gpu instead
+# PaddlePaddle framework (CPU version for Docker deployment)
 paddlepaddle>=2.5.0
 paddleocr>=2.7.0
 
 # =============================================================================
-# Text matching and fuzzy search (NEW in v2.0)
+# Text matching and fuzzy search
 # =============================================================================
 rapidfuzz>=3.0.0
 
@@ -53,26 +56,10 @@ lapx>=0.5.0
 # Database for large catalog datasets (200,000+ SKUs)
 # =============================================================================
 # DuckDB: Fast analytical database for large datasets
-# Better than SQLite for analytical queries and large datasets
 duckdb>=0.9.0
 
 # =============================================================================
 # Production deployment
 # =============================================================================
-gunicorn>=21.2.0
-
-# =============================================================================
-# Optional dependencies
-# =============================================================================
-# For enhanced text similarity (TF-IDF) - uncomment if needed
-# scikit-learn>=1.0.0
-
-# For GPU support with PaddleOCR - uncomment and replace paddlepaddle above
-# paddlepaddle-gpu>=2.5.0
-
-# =============================================================================
-# Development/Testing dependencies (optional)
-# =============================================================================
-# pytest>=7.0.0  # Uncomment if using pytest for testing
-# httpx>=0.24.0  # Uncomment if using httpx for API testing
-
+# Note: gunicorn removed - using uvicorn directly to reduce memory footprint
+# uvicorn is already included in uvicorn[standard] above

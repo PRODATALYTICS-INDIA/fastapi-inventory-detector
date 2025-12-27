@@ -1,0 +1,89 @@
+{
+  "success": true,
+  "status": "success",
+  "timestamp": "2025-12-27T11:22:17.970148",
+  "model_version": "25.11.0",
+  "app_version": "2.0.0",
+  "processing_time_ms": 6.599903106689453,
+  "input": {
+    "type": "image",
+    "filename": "20251010-9.jpeg",
+    "frame_count": 1
+  },
+  "summary": {
+    "sku_counts": {
+      "sku2_boost": {
+        "sku_id": "Sku2_Boost",
+        "count": 1,
+        "confidence": 0.8881715563210574
+      },
+      "sku1_dettol_soap": {
+        "sku_id": "Sku1_Dettol Soap",
+        "count": 1,
+        "confidence": 0.8721314191818237
+      }
+    },
+    "total_detections": 2,
+    "validated_detections": 2
+  },
+  "details": [
+    {
+      "detection_id": "f0_d0",
+      "final_prediction": {
+        "sku_id": "Sku2_Boost",
+        "sku_name": "boost ",
+        "confidence": 0.8881715563210574,
+        "bbox": [
+          469.676025390625,
+          719.9288330078125,
+          688.8741455078125,
+          999.8603515625
+        ],
+        "validation_status": "fully_validated",
+        "decision_reason": [
+          "detection_ocr_agreement",
+          "both_predicted_Sku2_Boost"
+        ]
+      },
+      "detection_model": {
+        "matched_sku_id": "Sku2_Boost",
+        "match_confidence": 0.9581612944602966
+      },
+      "ocr_model": {
+        "text_raw": "boos 5 1cup pack",
+        "method": "fuzzy",
+        "matched_sku_id": "Sku2_Boost",
+        "match_confidence": 0.8181818181818181
+      }
+    },
+    {
+      "detection_id": "f0_d1",
+      "final_prediction": {
+        "sku_id": "Sku1_Dettol Soap",
+        "sku_name": "dettol-soap",
+        "confidence": 0.8721314191818237,
+        "bbox": [
+          453.40667724609375,
+          431.7022705078125,
+          604.5115356445312,
+          652.3515625
+        ],
+        "validation_status": "fully_validated",
+        "decision_reason": [
+          "detection_ocr_agreement",
+          "both_predicted_Sku1_Dettol Soap"
+        ]
+      },
+      "detection_model": {
+        "matched_sku_id": "Sku1_Dettol Soap",
+        "match_confidence": 0.8442628383636475
+      },
+      "ocr_model": {
+        "text_raw": "6666 orriinnl dettol",
+        "method": "fuzzy",
+        "matched_sku_id": "Sku1_Dettol Soap",
+        "match_confidence": 0.9
+      }
+    }
+  ]
+}

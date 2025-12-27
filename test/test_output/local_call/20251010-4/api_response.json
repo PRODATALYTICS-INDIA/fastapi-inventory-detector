@@ -1,0 +1,55 @@
+{
+  "success": true,
+  "status": "success",
+  "timestamp": "2025-12-27T11:22:14.861283",
+  "model_version": "25.11.0",
+  "app_version": "2.0.0",
+  "processing_time_ms": 8.162736892700195,
+  "input": {
+    "type": "image",
+    "filename": "20251010-4.jpeg",
+    "frame_count": 1
+  },
+  "summary": {
+    "sku_counts": {
+      "sku1_dettol_soap": {
+        "sku_id": "Sku1_Dettol Soap",
+        "count": 1,
+        "confidence": 0.9099079191684722
+      }
+    },
+    "total_detections": 1,
+    "validated_detections": 1
+  },
+  "details": [
+    {
+      "detection_id": "f0_d0",
+      "final_prediction": {
+        "sku_id": "Sku1_Dettol Soap",
+        "sku_name": "dettol-soap",
+        "confidence": 0.9099079191684722,
+        "bbox": [
+          623.3294677734375,
+          756.277587890625,
+          801.012451171875,
+          999.695556640625
+        ],
+        "validation_status": "fully_validated",
+        "decision_reason": [
+          "detection_ocr_agreement",
+          "both_predicted_Sku1_Dettol Soap"
+        ]
+      },
+      "detection_model": {
+        "matched_sku_id": "Sku1_Dettol Soap",
+        "match_confidence": 0.9198158383369446
+      },
+      "ocr_model": {
+        "text_raw": "dettol",
+        "method": "fuzzy",
+        "matched_sku_id": "Sku1_Dettol Soap",
+        "match_confidence": 0.9
+      }
+    }
+  ]
+}

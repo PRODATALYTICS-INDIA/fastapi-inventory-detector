@@ -1,0 +1,72 @@
+================================================================================
+DETECTION AND OCR RESULTS
+================================================================================
+
+Image: 20251010-6.jpeg
+Processed: 2025-12-27 11:22:15
+Confidence Threshold: 0.5
+Total Detections: 2
+
+DETECTION SUMMARY:
+--------------------------------------------------------------------------------
+  boost : 1 items (avg confidence: 94.8%)
+  colgate-paste: 1 items (avg confidence: 88.3%)
+  ajay-tooth-brush: 3 items (avg confidence: 68.6%)
+  dettol-soap: 1 items (avg confidence: 79.1%)
+
+DETAILED RESULTS:
+================================================================================
+
+Object 1:
+--------------------------------------------------------------------------------
+  Detection SKU: Sku2_Boost
+  Detection Confidence: 94.78%
+  Detection ID: 21
+  Bounding Box: [451, 675, 665, 941]
+
+  OCR Results:
+    Extracted Text: 'boos s 1cup pack'
+    Text Lines: 3
+      Line 1: 'BoOS' (confidence: 72.06%)
+      Line 2: 'S' (confidence: 83.17%)
+      Line 3: '1CUP PACK' (confidence: 91.00%)
+
+  SKU Matching:
+    Matched SKU: Sku2_Boost
+    SKU Name: boost 
+    Match Confidence: 81.82%
+
+  Keyword Similarity (OCR vs Detection Keywords):
+    Best Match Keyword: 'boost'
+    Similarity Score: 63.49%
+    Top Matches:
+      - 'boost': 63.49%
+      - 'boost drink': 53.47%
+      - 'boost health': 50.84%
+
+Object 2:
+--------------------------------------------------------------------------------
+  Detection SKU: Sku7_Ajay tooth Brush
+  Detection Confidence: 81.97%
+  Detection ID: 20
+  Bounding Box: [272, 289, 389, 949]
+
+  OCR Results:
+    Extracted Text: '20/ ajay'
+    Text Lines: 2
+      Line 1: '20/' (confidence: 96.20%)
+      Line 2: 'Ajay' (confidence: 73.32%)
+
+  SKU Matching:
+    Matched SKU: Sku7_Ajay tooth Brush
+    SKU Name: ajay-tooth-brush
+    Match Confidence: 90.00%
+
+  Keyword Similarity (OCR vs Detection Keywords):
+    Best Match Keyword: 'ajay'
+    Similarity Score: 90.00%
+    Top Matches:
+      - 'ajay': 90.00%
+      - 'tooth brush ajay': 61.79%
+      - 'ajay brush': 60.00%
+

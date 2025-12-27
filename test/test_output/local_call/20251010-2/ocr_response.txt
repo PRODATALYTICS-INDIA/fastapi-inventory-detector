@@ -1,0 +1,45 @@
+================================================================================
+DETECTION AND OCR RESULTS
+================================================================================
+
+Image: 20251010-2.jpeg
+Processed: 2025-12-27 11:22:14
+Confidence Threshold: 0.5
+Total Detections: 1
+
+DETECTION SUMMARY:
+--------------------------------------------------------------------------------
+  boost : 1 items (avg confidence: 94.4%)
+  colgate-paste: 1 items (avg confidence: 87.3%)
+  ajay-tooth-brush: 2 items (avg confidence: 66.7%)
+  dettol-soap: 1 items (avg confidence: 59.2%)
+
+DETAILED RESULTS:
+================================================================================
+
+Object 1:
+--------------------------------------------------------------------------------
+  Detection SKU: Sku2_Boost
+  Detection Confidence: 94.40%
+  Detection ID: 2
+  Bounding Box: [81, 601, 265, 843]
+
+  OCR Results:
+    Extracted Text: 'boos1 1cuppack'
+    Text Lines: 2
+      Line 1: 'BOOS1' (confidence: 69.00%)
+      Line 2: '1CUPPACK' (confidence: 97.80%)
+
+  SKU Matching:
+    Matched SKU: Sku2_Boost
+    SKU Name: boost 
+    Match Confidence: 80.00%
+
+  Keyword Similarity (OCR vs Detection Keywords):
+    Best Match Keyword: 'boost'
+    Similarity Score: 65.50%
+    Top Matches:
+      - 'boost': 65.50%
+      - 'boost drink': 45.41%
+      - 'boost health': 43.16%
+

@@ -5,6 +5,11 @@ Handles OCR model initialization and provides text extraction from images.
 from typing import List, Tuple, Optional
 import numpy as np
 import logging
+import os
+
+# Set PaddleOCR allocator strategy before any Paddle imports to prevent OOM
+# This must be set before importing paddle or paddleocr
+os.environ['FLAGS_allocator_strategy'] = 'auto_growth'
 
 try:
     from paddleocr import PaddleOCR
@@ -102,11 +107,30 @@ class OCRModel:
             else:
                 image_rgb = image
             
-            # Run OCR
-            ocr_results = self.ocr.ocr(image_rgb, cls=self.use_angle_cls)
+            # Run OCR - handle different PaddleOCR API versions
+            try:
+                # Try with cls parameter (newer versions)
+                if self.use_angle_cls:
+                    ocr_results = self.ocr.ocr(image_rgb, cls=True)
+                else:
+                    ocr_results = self.ocr.ocr(image_rgb, cls=False)
+            except TypeError as e:
+                # Fallback for older versions that don't support cls parameter
+                try:
+                    ocr_results = self.ocr.ocr(image_rgb)
+                except Exception as e2:
+                    logger.error(f"OCR call failed with both methods: {str(e2)}")
+                    return "", []
+            except Exception as e:
+                logger.error(f"OCR call failed: {str(e)}")
+                return "", []
             
             # Parse results
-            if not ocr_results:
+            if not ocr_results or ocr_results is None:
+                return "", []
+            
+            # Handle case where OCR returns empty list
+            if isinstance(ocr_results, list) and len(ocr_results) == 0:
                 return "", []
             
             text_lines = []
@@ -138,7 +162,10 @@ class OCRModel:
             return concatenated_text, detailed_results
             
         except Exception as e:
-            logger.error(f"OCR extraction failed: {str(e)}")
+            error_msg = str(e) if e else "Unknown error"
+            logger.error(f"OCR extraction failed: {error_msg}")
+            import traceback
+            logger.debug(f"OCR error traceback: {traceback.format_exc()}")
             return "", []
     
     def extract_text_batch(

@@ -1,0 +1,93 @@
+{
+  "success": true,
+  "status": "success",
+  "timestamp": "2025-12-27T11:26:39.575138",
+  "model_version": "25.11.0",
+  "app_version": "2.0.0",
+  "processing_time_ms": 441.27416610717773,
+  "input": {
+    "type": "image",
+    "filename": "20251010-9.jpeg",
+    "frame_count": 1
+  },
+  "summary": {
+    "sku_counts": {
+      "sku2_boost": {
+        "sku_id": "Sku2_Boost",
+        "count": 1,
+        "confidence": 0.3449380660057068
+      },
+      "sku1_dettol_soap": {
+        "sku_id": "Sku1_Dettol Soap",
+        "count": 1,
+        "confidence": 0.3039346218109131
+      }
+    },
+    "total_detections": 2,
+    "validated_detections": 0
+  },
+  "details": [
+    {
+      "detection_id": "f0_d0",
+      "final_prediction": {
+        "sku_id": "Sku2_Boost",
+        "sku_name": "boost ",
+        "confidence": 0.3449380660057068,
+        "bbox": [
+          469.676025390625,
+          719.9288330078125,
+          688.8741455078125,
+          999.8603515625
+        ],
+        "validation_status": "only_detection_validated",
+        "decision_reason": [
+          "detection_strong_ocr_weak",
+          "detection_confidence_0.96_above_0.6",
+          "ocr_match_confidence_0.00_below_0.7",
+          "confidence_penalty_applied_0.6"
+        ]
+      },
+      "detection_model": {
+        "matched_sku_id": "Sku2_Boost",
+        "match_confidence": 0.9581612944602966
+      },
+      "ocr_model": {
+        "text_raw": "r  fk.p ",
+        "method": "none",
+        "matched_sku_id": null,
+        "match_confidence": null
+      }
+    },
+    {
+      "detection_id": "f0_d1",
+      "final_prediction": {
+        "sku_id": "Sku1_Dettol Soap",
+        "sku_name": "dettol-soap",
+        "confidence": 0.3039346218109131,
+        "bbox": [
+          453.40667724609375,
+          431.7022705078125,
+          604.5115356445312,
+          652.3515625
+        ],
+        "validation_status": "only_detection_validated",
+        "decision_reason": [
+          "detection_strong_ocr_weak",
+          "detection_confidence_0.84_above_0.6",
+          "ocr_match_confidence_0.00_below_0.7",
+          "confidence_penalty_applied_0.6"
+        ]
+      },
+      "detection_model": {
+        "matched_sku_id": "Sku1_Dettol Soap",
+        "match_confidence": 0.8442628383636475
+      },
+      "ocr_model": {
+        "text_raw": ") ",
+        "method": "none",
+        "matched_sku_id": null,
+        "match_confidence": null
+      }
+    }
+  ]
+}

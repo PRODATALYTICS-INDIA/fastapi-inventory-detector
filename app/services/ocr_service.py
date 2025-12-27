@@ -5,8 +5,9 @@ Handles OCR text extraction from product crops.
 from typing import List, Tuple, Optional
 import numpy as np
 import logging
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError as FutureTimeoutError
 import multiprocessing as mp
+import time
 
 from app.models.ocr_model import OCRModel
 from app.utils.image_utils import preprocess_image_for_ocr, resize_image_for_ocr
@@ -25,7 +26,8 @@ class OCRService:
         ocr_model: OCRModel,
         use_multiprocessing: bool = True,
         max_workers: Optional[int] = None,
-        preprocess: bool = True
+        preprocess: bool = True,
+        timeout_per_crop: float = 5.0  # 5 seconds per crop
     ):
         """
         Initialize OCR service.
@@ -35,18 +37,20 @@ class OCRService:
             use_multiprocessing: Whether to use multiprocessing for batch OCR
             max_workers: Maximum number of worker processes (None = auto)
             preprocess: Whether to preprocess images before OCR
+            timeout_per_crop: Timeout in seconds for each OCR crop (default: 5.0)
         """
         self.ocr_model = ocr_model
         self.use_multiprocessing = use_multiprocessing
         self.max_workers = max_workers or min(mp.cpu_count(), 4)
         self.preprocess = preprocess
+        self.timeout_per_crop = timeout_per_crop
     
     def extract_text(
         self,
         crop: np.ndarray
     ) -> Tuple[str, List[dict]]:
         """
-        Extract text from a single crop image.
+        Extract text from a single crop image with timeout protection.
         
         Args:
             crop: Cropped product image as numpy array
@@ -63,8 +67,13 @@ class OCRService:
                 crop = preprocess_image_for_ocr(crop)
                 crop = resize_image_for_ocr(crop)
             
-            # Run OCR
+            # Run OCR with timeout protection
+            start_time = time.time()
             text, details = self.ocr_model.extract_text(crop)
+            elapsed = time.time() - start_time
+            
+            if elapsed > self.timeout_per_crop:
+                logger.warning(f"OCR took {elapsed:.2f}s (exceeded {self.timeout_per_crop}s timeout)")
             
             return text, details
             
@@ -126,6 +135,9 @@ class OCRService:
         
         # Use ThreadPoolExecutor for I/O-bound OCR operations
         # Note: PaddleOCR may have GIL issues, so threading might be better than multiprocessing
+        total_timeout = self.timeout_per_crop * len(valid_crops) + 10  # Total timeout with buffer
+        start_time = time.time()
+        
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
             # Submit all OCR tasks
             future_to_idx = {
@@ -133,14 +145,32 @@ class OCRService:
                 for idx, crop in valid_crops
             }
             
-            # Collect results as they complete
-            for future in as_completed(future_to_idx):
-                idx = future_to_idx[future]
-                try:
-                    text, details = future.result()
-                    results[idx] = (text, details)
-                except Exception as e:
-                    logger.error(f"OCR task failed for crop {idx}: {str(e)}")
-                    results[idx] = ("", [])
+            # Collect results as they complete with timeout protection
+            try:
+                for future in as_completed(future_to_idx, timeout=total_timeout):
+                    # Check if we've exceeded total timeout
+                    elapsed = time.time() - start_time
+                    if elapsed > total_timeout:
+                        logger.warning(f"OCR batch processing exceeded total timeout ({total_timeout}s)")
+                        break
+                    
+                    idx = future_to_idx[future]
+                    try:
+                        # Get result with individual timeout
+                        text, details = future.result(timeout=1.0)  # Quick check if ready
+                        results[idx] = (text, details)
+                    except FutureTimeoutError:
+                        # Future not ready yet, but as_completed should handle this
+                        logger.warning(f"OCR task for crop {idx} not ready")
+                        results[idx] = ("", [])
+                    except Exception as e:
+                        logger.error(f"OCR task failed for crop {idx}: {str(e)}")
+                        results[idx] = ("", [])
+            except FutureTimeoutError:
+                logger.warning(f"OCR batch processing timed out after {total_timeout}s")
+                # Mark remaining futures as timed out
+                for future, idx in future_to_idx.items():
+                    if idx not in [i for i, _ in enumerate(results) if results[i] != ("", [])]:
+                        results[idx] = ("", [])
         
         return results

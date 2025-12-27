@@ -1,0 +1,88 @@
+================================================================================
+DETECTION AND OCR RESULTS
+================================================================================
+
+Image: 20251010-7.jpeg
+Processed: 2025-12-27 11:22:16
+Confidence Threshold: 0.5
+Total Detections: 3
+
+DETECTION SUMMARY:
+--------------------------------------------------------------------------------
+  dettol-soap: 1 items (avg confidence: 90.5%)
+  boost : 1 items (avg confidence: 90.2%)
+  colgate-paste: 1 items (avg confidence: 85.2%)
+  ajay-tooth-brush: 1 items (avg confidence: 83.4%)
+
+DETAILED RESULTS:
+================================================================================
+
+Object 1:
+--------------------------------------------------------------------------------
+  Detection SKU: Sku1_Dettol Soap
+  Detection Confidence: 90.51%
+  Detection ID: 23
+  Bounding Box: [437, 445, 582, 660]
+
+  OCR Results:
+    Extracted Text: '66.66 dettol'
+    Text Lines: 2
+      Line 1: '66.66' (confidence: 81.08%)
+      Line 2: 'Dettol' (confidence: 99.80%)
+
+  SKU Matching:
+    Matched SKU: Sku1_Dettol Soap
+    SKU Name: dettol-soap
+    Match Confidence: 90.00%
+
+  Keyword Similarity (OCR vs Detection Keywords):
+    Best Match Keyword: 'dettol'
+    Similarity Score: 90.00%
+    Top Matches:
+      - 'dettol': 90.00%
+      - 'dettol soap': 65.06%
+      - 'dettol bar soap': 62.22%
+
+Object 2:
+--------------------------------------------------------------------------------
+  Detection SKU: Sku2_Boost
+  Detection Confidence: 90.20%
+  Detection ID: 21
+  Bounding Box: [435, 729, 637, 1001]
+
+  OCR Results:
+    Extracted Text: 'boos s. 1cuppack'
+    Text Lines: 3
+      Line 1: 'Boos' (confidence: 71.59%)
+      Line 2: 'S.' (confidence: 68.99%)
+      Line 3: '1CUPPACK' (confidence: 97.54%)
+
+  SKU Matching:
+    Matched SKU: Sku2_Boost
+    SKU Name: boost 
+    Match Confidence: 81.82%
+
+  Keyword Similarity (OCR vs Detection Keywords):
+    Best Match Keyword: 'boost'
+    Similarity Score: 63.49%
+    Top Matches:
+      - 'boost': 63.49%
+      - 'boost drink': 49.77%
+      - 'boost health': 47.27%
+
+Object 3:
+--------------------------------------------------------------------------------
+  Detection SKU: Sku7_Ajay tooth Brush
+  Detection Confidence: 83.37%
+  Detection ID: 20
+  Bounding Box: [267, 327, 375, 988]
+
+  OCR Results:
+    No text extracted
+
+  SKU Matching:
+    Skipped (no OCR text)
+
+  Keyword Similarity (OCR vs Detection Keywords):
+    Skipped (no OCR text)
+

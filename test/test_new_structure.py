@@ -55,10 +55,25 @@ def test_imports():
         return False
     
     try:
-        from app.schemas.response import DetectionResponse, ProductDetection
+        from app.schemas.response import (
+            DetectionResponse, 
+            ProductDetection,  # Legacy
+            DetectionDetail,
+            DetectionModelOutput,
+            OCRModelOutput,
+            FinalPrediction,
+            ValidationStatus
+        )
         print("✅ Response schemas import successful")
     except Exception as e:
         print(f"❌ Response schemas import failed: {e}")
+        return False
+    
+    try:
+        from app.utils.inventory_summary import generate_summary
+        print("✅ Summary aggregator import successful")
+    except Exception as e:
+        print(f"❌ Summary aggregator import failed: {e}")
         return False
     
     return True

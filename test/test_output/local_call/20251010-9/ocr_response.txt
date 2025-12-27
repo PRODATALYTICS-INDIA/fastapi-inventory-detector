@@ -1,0 +1,73 @@
+================================================================================
+DETECTION AND OCR RESULTS
+================================================================================
+
+Image: 20251010-9.jpeg
+Processed: 2025-12-27 11:22:17
+Confidence Threshold: 0.5
+Total Detections: 2
+
+DETECTION SUMMARY:
+--------------------------------------------------------------------------------
+  boost : 1 items (avg confidence: 95.8%)
+  dettol-soap: 1 items (avg confidence: 84.4%)
+  colgate-paste: 1 items (avg confidence: 83.1%)
+  ajay-tooth-brush: 2 items (avg confidence: 66.4%)
+
+DETAILED RESULTS:
+================================================================================
+
+Object 1:
+--------------------------------------------------------------------------------
+  Detection SKU: Sku2_Boost
+  Detection Confidence: 95.82%
+  Detection ID: 21
+  Bounding Box: [470, 720, 689, 1000]
+
+  OCR Results:
+    Extracted Text: 'boos 5 1cup pack'
+    Text Lines: 3
+      Line 1: 'BoOS' (confidence: 68.66%)
+      Line 2: '5' (confidence: 98.61%)
+      Line 3: '1CUP PACK' (confidence: 93.32%)
+
+  SKU Matching:
+    Matched SKU: Sku2_Boost
+    SKU Name: boost 
+    Match Confidence: 81.82%
+
+  Keyword Similarity (OCR vs Detection Keywords):
+    Best Match Keyword: 'boost'
+    Similarity Score: 63.49%
+    Top Matches:
+      - 'boost': 63.49%
+      - 'boost drink': 53.47%
+      - 'boost health': 50.84%
+
+Object 2:
+--------------------------------------------------------------------------------
+  Detection SKU: Sku1_Dettol Soap
+  Detection Confidence: 84.43%
+  Detection ID: 23
+  Bounding Box: [453, 432, 605, 652]
+
+  OCR Results:
+    Extracted Text: '6666 orriinnl dettol'
+    Text Lines: 3
+      Line 1: '6666' (confidence: 82.20%)
+      Line 2: 'ORRIINNL' (confidence: 64.87%)
+      Line 3: 'Dettol' (confidence: 99.72%)
+
+  SKU Matching:
+    Matched SKU: Sku1_Dettol Soap
+    SKU Name: dettol-soap
+    Match Confidence: 90.00%
+
+  Keyword Similarity (OCR vs Detection Keywords):
+    Best Match Keyword: 'dettol'
+    Similarity Score: 83.85%
+    Top Matches:
+      - 'dettol': 83.85%
+      - 'dettol soap': 64.90%
+      - 'dettol bar soap': 55.43%
+

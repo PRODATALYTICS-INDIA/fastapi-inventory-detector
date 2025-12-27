@@ -1,0 +1,10 @@
+{
+  "success": false,
+  "status": "error",
+  "error": "API request failed: Container stopped during processing. Original error: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
+  "input": {
+    "type": "image",
+    "filename": "20251010-1.jpeg",
+    "frame_count": 1
+  }
+}

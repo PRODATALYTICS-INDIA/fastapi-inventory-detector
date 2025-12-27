@@ -149,7 +149,7 @@ def test_ocr_on_image(image_path: str, show_preview: bool = False):
         return None
 
 
-def test_batch_ocr(image_dir: str = "test_images", max_images: int = 5):
+def test_batch_ocr(image_dir: str, max_images: int = 5):
     """Test OCR on multiple images."""
     print("=" * 70)
     print(f"Batch OCR Testing")
@@ -212,8 +212,8 @@ def main():
     )
     parser.add_argument(
         "--dir",
-        default="test_images",
-        help="Directory containing test images (default: test_images)"
+        default=None,
+        help="Directory containing test images (default: test/test_images)"
     )
     parser.add_argument(
         "--batch",
@@ -229,19 +229,41 @@ def main():
     
     args = parser.parse_args()
     
-    # Change to test directory if running from project root
-    if Path("test").exists():
-        os.chdir(Path(__file__).parent.parent)
+    # Resolve test images directory
+    PROJECT_ROOT = Path(__file__).parent.parent
+    if args.dir is None:
+        test_images_dir = PROJECT_ROOT / "test" / "test_images"
+    else:
+        test_images_dir = Path(args.dir)
+        if not test_images_dir.is_absolute():
+            # Try relative to test directory
+            test_path = PROJECT_ROOT / "test" / "test_images" / args.dir
+            if test_path.exists():
+                test_images_dir = test_path
+            elif not test_images_dir.exists():
+                # Try as relative path from project root
+                test_images_dir = PROJECT_ROOT / args.dir
     
     if args.image:
-        test_ocr_on_image(args.image)
+        # Resolve image path
+        image_path = Path(args.image)
+        if not image_path.is_absolute():
+            # Try test/test_images first
+            test_image_path = PROJECT_ROOT / "test" / "test_images" / image_path.name
+            if test_image_path.exists():
+                test_ocr_on_image(str(test_image_path))
+            elif image_path.exists():
+                test_ocr_on_image(str(image_path))
+            else:
+                print(f"❌ Image not found: {args.image}")
+        else:
+            test_ocr_on_image(str(image_path))
     elif args.batch:
-        test_batch_ocr(args.dir, args.max_images)
+        test_batch_ocr(str(test_images_dir), args.max_images)
     else:
         # Default: test first available image
-        test_images_dir = Path(args.dir)
         if test_images_dir.exists():
-            image_files = list(test_images_dir.glob("*.jpeg")) + list(test_images_dir.glob("*.jpg"))
+            image_files = list(test_images_dir.glob("*.jpeg")) + list(test_images_dir.glob("*.jpg")) + list(test_images_dir.glob("*.png"))
             if image_files:
                 test_ocr_on_image(str(image_files[0]))
             else:

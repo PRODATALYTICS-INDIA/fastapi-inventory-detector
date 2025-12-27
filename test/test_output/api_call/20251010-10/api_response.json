@@ -1,0 +1,93 @@
+{
+  "success": true,
+  "status": "success",
+  "timestamp": "2025-12-27T11:26:34.472407",
+  "model_version": "25.11.0",
+  "app_version": "2.0.0",
+  "processing_time_ms": 285.63809394836426,
+  "input": {
+    "type": "image",
+    "filename": "20251010-10.jpeg",
+    "frame_count": 1
+  },
+  "summary": {
+    "sku_counts": {
+      "sku2_boost": {
+        "sku_id": "Sku2_Boost",
+        "count": 1,
+        "confidence": 0.48450537443161007
+      },
+      "sku7_ajay_tooth_brush": {
+        "sku_id": "Sku7_Ajay tooth Brush",
+        "count": 1,
+        "confidence": 0.4004874140024185
+      }
+    },
+    "total_detections": 2,
+    "validated_detections": 0
+  },
+  "details": [
+    {
+      "detection_id": "f0_d0",
+      "final_prediction": {
+        "sku_id": "Sku2_Boost",
+        "sku_name": "boost ",
+        "confidence": 0.48450537443161007,
+        "bbox": [
+          478.35400390625,
+          133.98773193359375,
+          762.314208984375,
+          363.14605712890625
+        ],
+        "validation_status": "only_detection_validated",
+        "decision_reason": [
+          "detection_strong_ocr_weak",
+          "detection_confidence_0.95_above_0.6",
+          "ocr_text_empty",
+          "confidence_penalty_applied_0.6"
+        ]
+      },
+      "detection_model": {
+        "matched_sku_id": "Sku2_Boost",
+        "match_confidence": 0.9500105381011963
+      },
+      "ocr_model": {
+        "text_raw": "",
+        "method": "none",
+        "matched_sku_id": null,
+        "match_confidence": null
+      }
+    },
+    {
+      "detection_id": "f0_d1",
+      "final_prediction": {
+        "sku_id": "Sku7_Ajay tooth Brush",
+        "sku_name": "ajay-tooth-brush",
+        "confidence": 0.4004874140024185,
+        "bbox": [
+          64.52276611328125,
+          331.9053955078125,
+          221.59414672851562,
+          1030.25732421875
+        ],
+        "validation_status": "only_detection_validated",
+        "decision_reason": [
+          "detection_strong_ocr_weak",
+          "detection_confidence_0.79_above_0.6",
+          "ocr_text_empty",
+          "confidence_penalty_applied_0.6"
+        ]
+      },
+      "detection_model": {
+        "matched_sku_id": "Sku7_Ajay tooth Brush",
+        "match_confidence": 0.7852694392204285
+      },
+      "ocr_model": {
+        "text_raw": "",
+        "method": "none",
+        "matched_sku_id": null,
+        "match_confidence": null
+      }
+    }
+  ]
+}
