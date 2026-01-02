@@ -368,15 +368,28 @@ build_docker_image() {
     echo ""
     
     cd "$PROJECT_ROOT"
-        echo "   ⏳ Building (this may take several minutes)..."
-        echo "   📝 Full build logs saved to: /tmp/docker_build.log"
-        echo "   💡 Using multi-stage build with BuildKit for optimized image size"
-        echo ""
-        
-        if DOCKER_BUILDKIT=1 docker build --platform linux/amd64 --no-cache \
-            --progress=plain \
-            -f "$SCRIPT_DIR/Dockerfile" \
-            -t "$image_name" . > /tmp/docker_build.log 2>&1; then
+    echo "   ⏳ Building (this may take several minutes)..."
+    echo "   📝 Full build logs saved to: /tmp/docker_build.log"
+    echo "   💡 Using multi-stage build with BuildKit for optimized image size"
+    echo "   📊 Showing layer progress messages only (detailed output in log file):"
+    echo ""
+    
+    # Build with progress output - filter to show only echo statements (layer progress)
+    # Save all output to log file, but only show progress messages in console
+    # Filter out Docker BuildKit metadata lines (e.g., #11 [stage-1 2/11] RUN ...)
+    # Use grep with --line-buffered for real-time output
+    # Capture docker build exit code separately (grep || true won't affect it)
+    set +e  # Temporarily disable exit on error to capture exit code
+    DOCKER_BUILDKIT=1 docker build --platform linux/amd64 --no-cache \
+        --progress=plain \
+        -f "$SCRIPT_DIR/Dockerfile" \
+        -t "$image_name" . 2>&1 | tee /tmp/docker_build.log | \
+        grep --line-buffered -v -E "^#[0-9]+\s+\[|^#\s*\[" | \
+        grep --line-buffered -E "(━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|📦 Layer [0-9]+/12|🔍 Layer [0-9]+/12|🧹 Layer [0-9]+/12|📋 Layer [0-9]+/12|✅ Layer [0-9]+ complete|✅ Verified|✅ NumPy|✅ Requirements file prepared|✅ OpenCV|✅ PyTorch|✅ All critical packages verified|Verifying libGL|✅ Verified: libGL)" || true
+    BUILD_EXIT_CODE=${PIPESTATUS[0]}
+    set -e  # Re-enable exit on error
+    
+    if [ "$BUILD_EXIT_CODE" = "0" ]; then
         echo "   ✅ Image built successfully!"
         echo ""
         
@@ -487,14 +500,26 @@ cleanup_server() {
 # Function: Transfer Docker image to server
 transfer_image_to_server() {
     local image_name="$1"
-    echo "📤 Transferring Docker image to server..."
-    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    
     echo "   💾 Saving Docker image to tar file..."
+    
+    # Verify image exists before attempting to save
+    if ! docker image inspect "$image_name" &>/dev/null; then
+        echo "   ❌ Error: Docker image '$image_name' does not exist!"
+        echo ""
+        echo "   💡 Possible causes:"
+        echo "      - Build failed (check build logs: /tmp/docker_build.log)"
+        echo "      - Image name/tag mismatch"
+        echo ""
+        echo "   📋 Available images:"
+        docker images "prodatalytics/inventory-tracker-api" --format "table {{.Repository}}\t{{.Tag}}\t{{.ID}}" 2>/dev/null || echo "      (none found)"
+        return 1
+    fi
+    
     IMAGE_TAR="inventory-tracker-api.tar"
     TEMP_TAR="$PROJECT_ROOT/$IMAGE_TAR"
     REMOTE_TAR="$REMOTE_DIR/$IMAGE_TAR"
     
+    echo "   ✅ Image found: $image_name"
     if docker save "$image_name" -o "$TEMP_TAR"; then
         TAR_SIZE=$(du -h "$TEMP_TAR" | cut -f1)
         echo "   ✅ Image saved: $TAR_SIZE"
