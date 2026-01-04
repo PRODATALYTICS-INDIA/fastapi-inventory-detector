@@ -382,7 +382,7 @@ build_docker_image() {
     set +e  # Temporarily disable exit on error to capture exit code
     DOCKER_BUILDKIT=1 docker build --platform linux/amd64 --no-cache \
         --progress=plain \
-        -f "$SCRIPT_DIR/Dockerfile" \
+        -f "$SCRIPT_DIR/Dockerfile.server" \
         -t "$image_name" . 2>&1 | tee /tmp/docker_build.log | \
         grep --line-buffered -v -E "^#[0-9]+\s+\[|^#\s*\[" | \
         grep --line-buffered -E "(━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━|📦 Layer [0-9]+/12|🔍 Layer [0-9]+/12|🧹 Layer [0-9]+/12|📋 Layer [0-9]+/12|✅ Layer [0-9]+ complete|✅ Verified|✅ NumPy|✅ Requirements file prepared|✅ OpenCV|✅ PyTorch|✅ All critical packages verified|Verifying libGL|✅ Verified: libGL)" || true
@@ -905,9 +905,9 @@ case "$METHOD" in
         ssh -i "$PEM_FILE" "$USERNAME@$SERVER_IP" "mkdir -p $REMOTE_DIR"
         
         # Upload files
-        if [ -f "$SCRIPT_DIR/Dockerfile" ]; then
-            echo "📄 Uploading Dockerfile..."
-            scp -i "$PEM_FILE" "$SCRIPT_DIR/Dockerfile" "$USERNAME@$SERVER_IP:$REMOTE_DIR/"
+        if [ -f "$SCRIPT_DIR/Dockerfile.server" ]; then
+            echo "📄 Uploading Dockerfile.server..."
+            scp -i "$PEM_FILE" "$SCRIPT_DIR/Dockerfile.server" "$USERNAME@$SERVER_IP:$REMOTE_DIR/"
         fi
         
         if [ -f "$PROJECT_ROOT/requirements.txt" ]; then
@@ -1101,7 +1101,7 @@ case "$METHOD" in
                 echo "   ⚠️  ERROR DETECTED: OpenCV-related error"
                 echo "   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
                 echo "   This error indicates an issue with OpenCV in the container."
-                echo "   The Dockerfile uses opencv-python-headless (no GL/X11 dependencies)."
+                echo "   The Dockerfile.server uses opencv-python-headless (no GL/X11 dependencies)."
                 echo ""
                 echo "   🔧 FIX: Rebuild the image:"
                 echo "      ./deploy.sh rebuild"
@@ -1204,11 +1204,11 @@ case "$METHOD" in
         fi
         echo "   ✅ Docker is available"
         
-        if [ ! -f "$SCRIPT_DIR/Dockerfile" ]; then
-            echo "   ❌ Error: Dockerfile not found at '$SCRIPT_DIR/Dockerfile'"
+        if [ ! -f "$SCRIPT_DIR/Dockerfile.server" ]; then
+            echo "   ❌ Error: Dockerfile.server not found at '$SCRIPT_DIR/Dockerfile.server'"
             exit 1
         fi
-        echo "   ✅ Dockerfile found"
+        echo "   ✅ Dockerfile.server found"
         
         if [ ! -f "$PROJECT_ROOT/requirements.txt" ]; then
             echo "   ⚠️  Warning: requirements.txt not found, build may fail"
@@ -1871,7 +1871,7 @@ EOF
         echo "Methods (in typical workflow order):"
         echo ""
         echo "  1. rebuild                                - Complete rebuild: Build → Test → Clean → Transfer → Deploy"
-        echo "     (RECOMMENDED for fixing issues or after Dockerfile changes)"
+        echo "     (RECOMMENDED for fixing issues or after Dockerfile.server changes)"
         echo ""
         echo "  2. test-local                              - Test Docker image locally before deploying"
         echo "     (Verify image works before deploying to server)"
